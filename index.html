@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#16110f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>VenusFD, the voice that answers your salon</title>
+    <meta
+      name="description"
+      content="VenusFD is a voice AI receptionist for salons. It answers every call and books, reschedules, and cancels appointments on its own."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="VenusFD, the voice that answers your salon" />
+    <meta
+      property="og:description"
+      content="A voice AI receptionist for salons. It answers every call and handles every appointment."
+    />
+    <meta property="og:url" content="https://venusfd.com" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="starfield" id="starfield"></canvas>
+    <div class="aurora"></div>
+
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <span class="brand">venus<span class="fd">fd</span></span>
+        <a class="btn ghost" href="#book">Book a demo</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="venus">
+        <span class="venus-glow"></span>
+        <span class="ripple"></span>
+        <span class="ripple"></span>
+        <span class="ripple"></span>
+        <div class="venus-disc"><img src="venus.jpg" alt="" /></div>
+      </div>
+      <div class="hero-copy">
+        <span class="eyebrow">Voice AI receptionist for salons</span>
+        <h1>Your salon never <em>misses a call</em></h1>
+        <p class="lead">Your calendar on autopilot</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#demo">Hear it in action</a>
+          <a class="btn ghost" href="#book">Book a demo</a>
+        </div>
+      </div>
+      <div class="scroll-cue"><span></span></div>
+    </section>
+
+    <!-- Story -->
+    <section class="story" id="story">
+      <span class="eyebrow center reveal">Every appointment, handled</span>
+      <div class="story-cards">
+        <div class="story-card reveal">
+          <div class="mini-cal">
+            <div class="mini-head">
+              <span>Thursday</span>
+              <span class="mini-brand">venus<span>fd</span></span>
+            </div>
+            <div class="mini-body">
+              <div class="mini-row"><span class="mini-time">9:00</span></div>
+              <div class="mini-row">
+                <span class="mini-time">10:00</span>
+                <span class="mini-appt active"><span class="mini-dot"></span>Cut · Mia</span>
+              </div>
+              <div class="mini-row"><span class="mini-time">11:00</span></div>
+              <div class="mini-row"><span class="mini-time">12:00</span></div>
+            </div>
+          </div>
+          <h3 class="story-card-tag">Books</h3>
+          <p class="story-card-line">
+            Answers every call when your hands are full. Books straight into your calendar.
+          </p>
+        </div>
+        <div class="story-card reveal">
+          <div class="mini-cal">
+            <div class="mini-head">
+              <span>Thursday</span>
+              <span class="mini-brand">venus<span>fd</span></span>
+            </div>
+            <div class="mini-body">
+              <div class="mini-row"><span class="mini-time">9:00</span></div>
+              <div class="mini-row">
+                <span class="mini-time">10:00</span>
+                <span class="mini-appt faded">Cut · Mia</span>
+              </div>
+              <div class="mini-row"><span class="mini-time">11:00</span></div>
+              <div class="mini-row">
+                <span class="mini-time">12:00</span>
+                <span class="mini-appt active"><span class="mini-dot"></span>Cut · Mia</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="story-card-tag">Reschedules</h3>
+          <p class="story-card-line">No interruptions. Every guest feels like your only guest.</p>
+        </div>
+        <div class="story-card reveal">
+          <div class="mini-cal">
+            <div class="mini-head">
+              <span>Thursday</span>
+              <span class="mini-brand">venus<span>fd</span></span>
+            </div>
+            <div class="mini-body">
+              <div class="mini-row"><span class="mini-time">9:00</span></div>
+              <div class="mini-row">
+                <span class="mini-time">10:00</span>
+                <span class="mini-appt active cancelled"><span class="mini-dot"></span>Cut · Mia</span>
+              </div>
+              <div class="mini-row"><span class="mini-time">11:00</span></div>
+              <div class="mini-row"><span class="mini-time">12:00</span></div>
+            </div>
+          </div>
+          <h3 class="story-card-tag">Cancels</h3>
+          <p class="story-card-line">Cancellations handled by Venus. Your waitlist gets the opening.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator (Phase 1) -->
+    <section class="calc" id="calculator">
+      <div class="wrap">
+        <span class="eyebrow center reveal">The math</span>
+        <h2 class="section-title reveal">What do missed calls cost you?</h2>
+        <p class="calc-lead reveal">
+          Slide the numbers to match your salon. Most owners are surprised.
+        </p>
+        <div class="calc-card reveal">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <div class="calc-label">
+                <span>Calls you miss in a week</span>
+                <output id="missedOut">25</output>
+              </div>
+              <input type="range" id="missedIn" min="5" max="100" step="1" value="25" />
+              <p class="calc-hint">Salons miss about 1 in 3 calls — mid-color, hands full, after close.</p>
+            </div>
+            <div class="calc-field">
+              <div class="calc-label">
+                <span>Your average ticket</span>
+                <output id="ticketOut">$65</output>
+              </div>
+              <input type="range" id="ticketIn" min="20" max="200" step="5" value="65" />
+              <p class="calc-hint">Cut, color, blowout — whatever a typical visit runs.</p>
+            </div>
+            <div class="calc-field">
+              <div class="calc-label">
+                <span>How many would've booked</span>
+                <output id="rateOut">40%</output>
+              </div>
+              <input type="range" id="rateIn" min="10" max="80" step="5" value="40" />
+              <p class="calc-hint">Most callers won't leave a voicemail. They call the next salon.</p>
+            </div>
+          </div>
+          <div class="calc-result">
+            <p class="calc-result-label">Walking out the door</p>
+            <p class="calc-result-num"><span id="monthlyLoss">$2,815</span><em>/mo</em></p>
+            <p class="calc-result-year">That's <strong id="yearlyLoss">$33,774</strong> a year.</p>
+            <a class="btn primary calc-cta" href="#book">Stop the leak</a>
+            <p class="note">Venus picks up every one of those calls.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="capabilities">
+      <span class="eyebrow center reveal">What Venus handles</span>
+      <div class="feature-grid">
+        <div class="feature reveal">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <p>Answers every call, even if its at 10pm</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <p>Every booking reflects the right guest, pulled straight from your CRM.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </span>
+          <p>Texts your guests to confirm. No more no-shows.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M6 15v3h12v-3"/>
+            </svg>
+          </span>
+          <p>Every call answered live. Voicemail never gets the chance.</p>
+        </div>
+      </div>
+      <div class="feature-quote reveal">No CRM? Venus works directly with your calendar.</div>
+    </section>
+
+    <!-- Live demo -->
+    <section class="demo" id="demo">
+      <div class="wrap">
+        <span class="eyebrow center reveal">Live demo</span>
+        <h2 class="section-title reveal">Hear it in action</h2>
+        <div class="demo-card reveal">
+          <div class="demo-orb" id="demoOrb">
+            <span class="demo-ring"></span>
+            <span class="demo-ring"></span>
+            <img src="venus.jpg" alt="" />
+          </div>
+          <p class="demo-status" id="demoStatus">Every appointment, handled</p>
+          <button class="btn primary" id="demoBtn">Talk to Venus</button>
+          <p class="note" id="demoNote" hidden>
+            The live demo is being set up. Book a demo below and we will call you.
+          </p>
+          <p class="demo-mic">Uses your microphone. Headphones help.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book -->
+    <section class="book" id="book">
+      <div class="wrap">
+        <div class="book-grid">
+          <div>
+            <span class="eyebrow reveal">Get started</span>
+            <h2 class="section-title reveal">Book a demo</h2>
+            <p class="lead reveal">
+              Tell us about your salon and we will show you Venus on a quick call, then get you set up.
+            </p>
+            <form class="book-form reveal" id="bookForm">
+              <div class="row">
+                <input type="text" name="name" placeholder="Your name" required />
+                <input type="text" name="salon" placeholder="Salon name" required />
+              </div>
+              <div class="row">
+                <input type="tel" name="phone" placeholder="Phone" required />
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
+              <textarea name="notes" rows="3" placeholder="Anything we should know?"></textarea>
+              <button class="btn primary" type="submit">Book a demo</button>
+            </form>
+            <div class="form-done" id="formDone" hidden>
+              <h3>Got it, talk soon</h3>
+              <p class="muted">We'll reach out to set up your call.</p>
+            </div>
+          </div>
+          <div class="book-card reveal">
+            <span class="cal-glyph"></span>
+            <h3 class="book-card-title">VenusFD Demo</h3>
+            <p class="book-card-sub">
+              A quick 30 minute call over Google Meet. Choose a time that suits you and we will show you Venus.
+            </p>
+            <div class="book-card-meta">
+              <span>30 min</span>
+              <span>Google Meet</span>
+              <span>One on one</span>
+            </div>
+            <a class="btn primary book-card-btn" href="#book">Pick a time</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand">venus<span class="fd">fd</span></span>
+          <span class="muted">A voice AI receptionist for salons</span>
+        </div>
+        <div class="footer-meta">
+          <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="mailto:hello@venusfd.com">hello@venusfd.com</a>
+          </div>
+          <span class="footer-copy">© 2026 VenusFD. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
